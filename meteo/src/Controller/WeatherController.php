@@ -54,4 +54,25 @@ class WeatherController extends AbstractController
            
         
     }
+      /**
+     * @Route("/plage", name="beach")
+     */
+    public function beach(SessionInterface $session, WeatherModel $WeatherModel): Response
+    {
+        $widget = $session->get('last_weather');
+        return $this->render('weather/beach.html.twig', [
+            'widget' => $widget,
+        ]);
+    }
+
+    /**
+     * @Route("/montagne", name="mountain")
+     */
+    public function mountain(SessionInterface $session, WeatherModel $WeatherModel): Response
+    {
+        $widget = $session->get('last_weather');
+        return $this->render('weather/mountain.html.twig', [
+            'widget' => $widget,
+        ]);
+    }
 }
