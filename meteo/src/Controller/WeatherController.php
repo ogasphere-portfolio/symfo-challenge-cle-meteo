@@ -57,7 +57,7 @@ class WeatherController extends AbstractController
       /**
      * @Route("/plage", name="beach")
      */
-    public function beach(SessionInterface $session, WeatherModel $WeatherModel): Response
+    public function beach(SessionInterface $session): Response
     {
         $widget = $session->get('last_weather');
         return $this->render('weather/beach.html.twig', [
@@ -68,7 +68,7 @@ class WeatherController extends AbstractController
     /**
      * @Route("/montagne", name="mountain")
      */
-    public function mountain(SessionInterface $session, WeatherModel $WeatherModel): Response
+    public function mountain(SessionInterface $session): Response
     {
         $widget = $session->get('last_weather');
         return $this->render('weather/mountain.html.twig', [
