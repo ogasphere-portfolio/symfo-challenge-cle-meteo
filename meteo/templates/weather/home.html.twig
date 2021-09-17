@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<!-- Minimal responsive + columns     -->
+    <main class="container">
+        <div class="row">
+            <!-- Content (les pages) -->
+            <div class="col-9">
+             <h1 class="mb-5">Bienvenue sur la météo des villes !</h1> 
+                {% for weather_id, weather in weathers %}
+  
+                    <div class="item item--bg-{{weather.weather}}">
+                        <div class="item--city"><a href="#">{{weather.city}}</a></div>
+                        <div class="item--forecast">{{weather.date}} : {{weather.min}}°C / {{weather.max}}°C</div>
+                    </div>
+
+                {% endfor %}
+       
+            </div>
+          {{ include('_partials/sidebar.html.twig') }}
+        </div>
+    </main>
+  {# {{ path('weather_content', {id : weather_id}) }}">{{weather.city}} #}
+{% endblock %}
