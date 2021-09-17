@@ -34,7 +34,7 @@ class WeatherController extends AbstractController
     {
         
         $weather = $WeatherModel->getWeatherByCityIndex($id);
-
+        $weathers = $WeatherModel->getWeatherData();
          
         if ($weather === null) {
             // affiche une page 404 avec le message d'erreur fournit en argument
@@ -46,7 +46,8 @@ class WeatherController extends AbstractController
 
             $widget = $session->get('last_weather');
            
-            return $this->render('_partials/sidebar.html.twig', [
+            return $this->render('weather/home.html.twig', [
+                'weathers' => $weathers ,
                 'widget' => $widget,
             ]);
             
