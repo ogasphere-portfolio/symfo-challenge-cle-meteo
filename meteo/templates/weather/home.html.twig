@@ -9,18 +9,23 @@
             <!-- Content (les pages) -->
             <div class="col-9">
              <h1 class="mb-5">Bienvenue sur la météo des villes !</h1> 
-                {% for weather_id, weather in weathers %}
-  
-                    <div class="item item--bg-{{weather.weather}}">
-                        <div class="item--city"><a href="#">{{weather.city}}</a></div>
-                        <div class="item--forecast">{{weather.date}} : {{weather.min}}°C / {{weather.max}}°C</div>
-                    </div>
+                
+                {% if weathers  is defined %}
+    
+                    {% for weather_id, weather in weathers %}
+    
+                        <div class="item item--bg-{{weather.weather}}">
+                            <div class="item--city"><a href="{{ path('weather_widget', {id : weather_id}) }}">{{weather.city}}</a></div>
+                            <div class="item--forecast">{{weather.date}} : {{weather.min}}°C / {{weather.max}}°C</div>
+                        </div>
 
-                {% endfor %}
+                    {% endfor %}
+                {% endif %}
+                
        
             </div>
           {{ include('_partials/sidebar.html.twig') }}
         </div>
     </main>
-  {# {{ path('weather_content', {id : weather_id}) }}">{{weather.city}} #}
+  {# {{ path('weather_widget', {id : weather_id}) }}">{{weather.city}} #}
 {% endblock %}

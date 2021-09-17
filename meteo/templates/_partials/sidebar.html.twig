@@ -1,18 +1,23 @@
 <!-- Sidebar (le widget) -->
-            <div class="col-3">
+<div
+	class="col-3">
 
-                <!-- Code du widget -->
-                <div id="widget">
+	<!-- Code du widget -->
+	<div id="widget">
+		
+		<!-- Si ville sélectionnée -->
+        {% if widget  is defined %}
+			<p>
+				<b>{{widget.city}}</b>
+			</p>
+			<p>{{widget.date}}</p>
+			<p><img src="{{ asset("images/")}}{{widget.weather}}.png"></p>
+			<p>{{widget.min}}°C /
+				{{widget.max}}°C</p>
+		{% endif %}
+		<!-- Si ville non sélectionnée -->
+		<div>Sélectionnez une ville<br>dans la liste de gauche</div>
 
-                    <!-- Si ville sélectionnée -->
-                    <p><b>Bordeaux</b></p>
-                    <p>29-01-2020</p>
-                    <p><img src="images/sun-cloud.png"></p>
-                    <p>0°C / 10°C</p>
+	</div>
 
-                    <!-- Si ville non sélectionnée -->
-                    <div>Sélectionnez une ville<br>dans la liste de gauche</div>
-
-                </div>
-
-            </div>
+</div>
