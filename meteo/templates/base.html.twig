@@ -3,7 +3,10 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title>Welcome!</title>
+		<title>
+			{% block title %}Meteo'clock
+			{% endblock %}
+		</title>
 
 		<!-- Balises pour le responsive -->
 		<meta
@@ -17,22 +20,28 @@
 		<link rel="stylesheet" href="{{ asset("css/app.css") }}">
 	</head>
 
-	<body class="mb-5">
-		<nav class="container py-3 mb-3">
-			<ul class="nav nav-pills">
-				<li class="nav-item ">
-					<a class="nav-link {% if app.request.get('_route') == 'home' %}active{% endif %}" href="{{ path("home") }}">Accueil</a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link {% if app.request.get('_route') == 'mountain' %}active{% endif %}" href="{{ path("mountain") }}">Montagne</a>
-				</li>
-				<li class="nav-item ">
-					<a class="nav-link {% if app.request.get('_route') == 'beach' %}active{% endif %}" href="{{ path("beach") }}">Plages</a>
-				</li>
-			</ul>
-		</nav>
-	</body>
-	<body>
-		{% block body %}{% endblock %}
+				<body class="mb-5">
+					<nav class="container py-3 mb-3">
+						<ul class="nav nav-pills">
+							<li class="nav-item ">
+								<a class="nav-link {% if app.request.get('_route') == 'home' %}active{% endif %}" href="{{ path("home") }}">Accueil</a>
+							</li>
+							<li class="nav-item ">
+								<a class="nav-link {% if app.request.get('_route') == 'mountain' %}active{% endif %}" href="{{ path("mountain") }}">Montagne</a>
+							</li>
+							<li class="nav-item ">
+								<a class="nav-link {% if app.request.get('_route') == 'beach' %}active{% endif %}" href="{{ path("beach") }}">Plages</a>
+							</li>
+						</ul>
+					</nav>
+				</body>
+
+				<body>
+					{% block body %}{% endblock %}
+					{{ include('_partials/_sidebar.html.twig') }}
+				</body>
+						
+			</div>
+		</main>
 	</body>
 </html>

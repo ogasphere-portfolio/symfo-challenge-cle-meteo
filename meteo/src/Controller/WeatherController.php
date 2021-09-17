@@ -18,9 +18,11 @@ class WeatherController extends AbstractController
     {
        
         $weathers = $WeatherModel->getWeatherData();
-       
+        $widget = $session->get('last_weather');
+
         return $this->render('weather/home.html.twig', [
             'weathers' => $weathers ,
+          
         ]);
     }
 
@@ -36,20 +38,21 @@ class WeatherController extends AbstractController
         $weather = $WeatherModel->getWeatherByCityIndex($id);
         $weathers = $WeatherModel->getWeatherData();
          
-        if ($weather === null) {
-            // affiche une page 404 avec le message d'erreur fournit en argument
-            throw $this->createNotFoundException('The oisal does not exist'); 
-          
+        
+        if (false === $weather) {
+            // ajouter un flash message
+            // ou afficher une 404
+            $this->addFlash('danger','City unavailable!');
         }
-            // on ajoute la meteo en session
-            $session->set('last_weather', $weather);
-
-            $widget = $session->get('last_weather');
-           
-            return $this->render('weather/home.html.twig', [
-                'weathers' => $weathers ,
-                'widget' => $widget,
-            ]);
+        else 
+        {
+            // mettre les informations en session
+             // on ajoute la meteo en session
+             $session->set('last_weather', $weather);
+        }
+      
+             // redirection
+        return $this->redirectToRoute('home');
             
            
         
@@ -59,9 +62,9 @@ class WeatherController extends AbstractController
      */
     public function beach(SessionInterface $session): Response
     {
-        $widget = $session->get('last_weather');
+       
         return $this->render('weather/beach.html.twig', [
-            'widget' => $widget,
+         
         ]);
     }
 
@@ -70,9 +73,9 @@ class WeatherController extends AbstractController
      */
     public function mountain(SessionInterface $session): Response
     {
-        $widget = $session->get('last_weather');
+        
         return $this->render('weather/mountain.html.twig', [
-            'widget' => $widget,
+            
         ]);
     }
 }

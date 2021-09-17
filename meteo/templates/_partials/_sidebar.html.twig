@@ -4,9 +4,9 @@
 
 	<!-- Code du widget -->
 	<div id="widget">
-		
+		{% set widget = app.session.get('last_weather')%}
 		<!-- Si ville sélectionnée -->
-        {% if widget  is defined %}
+        {% if widget %}
 			<p>
 				<b>{{widget.city}}</b>
 			</p>
@@ -14,10 +14,10 @@
 			<p><img src="{{ asset("images/")}}{{widget.weather}}.png"></p>
 			<p>{{widget.min}}°C /
 				{{widget.max}}°C</p>
-		{% endif %}
-		<!-- Si ville non sélectionnée -->
-		<div>Sélectionnez une ville<br>dans la liste de gauche</div>
-
+		 {% else %}
+        <!-- Si ville non sélectionnée -->
+        <div>Sélectionnez une ville<br>dans la liste de gauche</div>
+    {% endif %}
 	</div>
 
 </div>

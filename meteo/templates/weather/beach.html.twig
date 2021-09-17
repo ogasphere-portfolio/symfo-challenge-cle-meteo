@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-
+{% block title %} Plages - {{ parent() }} {% endblock %}
 
 {% block body %}
  <main class="container">
@@ -21,8 +21,8 @@
                     maiores sunt? Qui, omnis?</p>
 
             </div>
-          {{ include('_partials/sidebar.html.twig') }}
-        </div>
-    </main>
+          
+          {% endblock %}
+     
   {# {{ path('weather_widget', {id : weather_id}) }}">{{weather.city}} #}
-{% endblock %}
+
