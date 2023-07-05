@@ -1,0 +1,27 @@
+<h1 id="prévisions-météo-du-jour">Prévisions météo du jour</h1>
+<h2 id="objectifs">Objectifs</h2>
+<ul>
+<li>Créer une page de prévisions météo du jour, et son <em>widget</em>.<ul>
+<li>Ce dernier affichera la prévision météo d'une ville sur toutes les pages du site (une fois celle-ci sélectionnée).</li></ul></li>
+<li>Utiliser les notions vues jusqu'ici : Install, Routing, Contrôleur, Twig, Session.</li>
+</ul>
+<h3 id="les-wireframes-de-lapplication">Les wireframes de l'application</h3>
+<p><img src="wireframes.png" alt="" /></p>
+<h3 id="les-étapes-possibles">Les étapes possibles</h3>
+<ul>
+<li><strong>Afficher la liste</strong> des villes depuis l'accueil.</li>
+<li>Cliquer sur une ville pour <strong>mettre cette ville dans le widget</strong>.<ul>
+<li>Mettre les infos de la ville en session et rediriger vers l'accueil.</li></ul></li>
+<li>Dans le widget météo :<ul>
+<li><strong>Afficher la prévision météo</strong> du jour (ville, date, température min/max, image météo), <strong>de la ville choisie</strong>.</li>
+<li><strong>Sinon afficher un message + un lien</strong> pour choisir une ville sur l'accueil.</li></ul></li>
+<li>Créer une navigation pour les 3 pages.</li>
+<li>CSS au choix : aucune, <em>maison</em>, framework CSS de votre choix.</li>
+</ul>
+<h3 id="modèle-de-données-fourni">Modèle de données fourni</h3>
+<p>Le modèle fourni <code>WeatherModel.php</code> contient déjà des données (tableau PHP) et vous propose 2 méthodes statiques pour les récupérer :</p>
+<p><strong>Toutes les villes</strong></p>
+<p><code>$data = WeatherModel::getWeatherData();</code></p>
+<p><strong>Les données pour une ville</strong></p>
+<p>Pour la ville en index numéro 5 :</p>
+<p><code>$city = WeatherModel::getWeatherByCityIndex(5);</code></p>
